@@ -1,0 +1,46 @@
+$asteroid_total: 10;
+
+@for $asteroid from 1 through $asteroid_total {
+  @keyframes fall-#{$asteroid} {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(-300vh, 300vh, 0);
+    }
+  }
+}
+
+.asteroid {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: white;
+  position: fixed;
+  transform-origin: 100% 0;
+  box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.3);
+  opacity: 1;
+  z-index: -1;
+  @for $asteroid from 1 through $asteroid_total {
+    &-#{$asteroid} {
+      right: -#{random(100)}vh;
+      top: -#{random(100)}vh;
+      animation: fall-#{$asteroid} #{3 + random(12)}s infinite;
+    }
+  }
+}
+
+.asteroid:after {
+  content: '';
+  display: block;
+  position: relative;
+  top: 0px;
+  left: 1px;
+  border: 0px solid #fff;
+  border-width: 0px 180px 8px 180px;
+  border-color: transparent transparent transparent rgba(255, 255, 255, 0.3);
+  transform: rotate(-45deg) translate3d(1px, 3px, 0);
+  box-shadow: 0 0 8px 8px rgba(255, 255, 255, 0);
+  transform-origin: 0% 0%;
+}

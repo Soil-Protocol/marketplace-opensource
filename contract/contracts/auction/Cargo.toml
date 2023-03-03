@@ -1,0 +1,49 @@
+[package]
+name = "auction"
+version = "2.0.0"
+authors = ["apemon <apemon642002@hotmail.com>"]
+edition = "2018"
+
+exclude = [
+  # Those files are rust-optimizer artifacts. You might want to commit them for convenience but they should not be part of the source code publication.
+  "contract.wasm",
+  "hash.txt",
+]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[profile.release]
+opt-level = 3
+debug = false
+rpath = false
+lto = true
+debug-assertions = false
+codegen-units = 1
+panic = 'abort'
+incremental = false
+overflow-checks = true
+
+[features]
+# for more explicit tests, cargo test --features=backtraces
+backtraces = ["cosmwasm-std/backtraces"]
+
+[dependencies]
+cosmwasm-std = { version = "1.0.0", features = ["stargate"] }
+cosmwasm-storage = { version = "1.0.0"  }
+schemars = "0.8.10"
+serde = { version = "1.0.137", default-features = false, features = ["derive"] }
+thiserror = { version = "1.0.31" }
+cw721 = { version = "0.13.2", git = "https://github.com/CosmWasm/cw-nfts", commit = "4e26419bb02f4b871fda487964a80bd419207428" }
+cw2981-royalties = { version = "0.13.2", git = "https://github.com/CosmWasm/cw-nfts", commit = "4e26419bb02f4b871fda487964a80bd419207428" }
+cw-utils = { version = "0.13.2"}
+cw20 = { version = "0.13.2" }
+cw-storage-plus = { version = "0.13.2" }
+marketplace = { path = "../../packages/marketplace", version = "2.0.0"}
+terraswap = { version = "2.6.1" }
+
+[dev-dependencies]
+cosmwasm-schema = { version = "1.0.0" }
+cw-multi-test = "0.13.2"

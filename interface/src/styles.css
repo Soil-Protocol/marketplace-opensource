@@ -1,0 +1,26 @@
+.nes-btn.is-primary::after {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  bottom: -4px;
+  left: -4px;
+  content: '';
+  color: white;
+  box-shadow: inset -4px -4px #31289d;
+}
+.nes-btn.is-primary:hover::after {
+  box-shadow: inset -6px -6px #31289d;
+}
+
+.nes-btn.is-primary:active:not(.is-disabled)::after{
+  box-shadow: inset 4px 4px #31289d;
+}
+
+.nes-btn.is-primary {
+  background: #5649e7;
+}
+
+.nes-btn.is-primary:hover {
+  background: #5b4feb;
+}
+

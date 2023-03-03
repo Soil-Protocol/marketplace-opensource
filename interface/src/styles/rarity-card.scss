@@ -1,0 +1,118 @@
+$common-color: #ddd;
+$uncommon-color: #0ed735;
+$rare-color: #0064fa;
+$epic-color: #6d1bf0;
+$legendary-color: #f0d012;
+$cosmic-color: #ee1114;
+
+.common-color {
+  color: $common-color !important;
+}
+.uncommon-color {
+  color: $uncommon-color !important;
+}
+.rare-color {
+  color: $rare-color !important;
+}
+.epic-color {
+  color: $epic-color !important;
+}
+.legendary-color {
+  color: $legendary-color !important;
+}
+.cosmic-color {
+  color: $cosmic-color !important;
+}
+
+.common,
+.Common,
+.COMMON {
+  border: 4px solid $common-color;
+}
+
+.uncommon,
+.Uncommon,
+.UNCOMMON {
+  border: 4px solid #0ed735;
+}
+
+.rare,
+.Rare,
+.RARE {
+  border: 4px solid #0064fa;
+  box-shadow: 0 0 18px 0px #0064fa;
+}
+
+.epic,
+.Epic,
+.EPIC {
+  border: 4px solid #6d1bf0;
+  box-shadow: 0 0 24px 1px #6d1bf0;
+}
+
+.legendary,
+.Legendary,
+.LEGENDARY {
+  box-shadow: 0 0 24px 2px #f0d012;
+  @keyframes legend-border-rotate {
+    @for $percent from 0 through 100 {
+      #{$percent * 1%} {
+        background-image: linear-gradient(#0c1044, #0c1044),
+          linear-gradient(#{$percent * 3.6deg}, #f0d012 0%, #a48400 50%, #f0d012 100%);
+      }
+    }
+  }
+  border: double 4px transparent;
+  background-image: linear-gradient(#0c1044, #0c1044),
+    linear-gradient(0, #f0d012 0%, #a48400 50%, #f0d012 100%);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  animation: legend-border-rotate 1500ms linear infinite;
+  &.large {
+    box-shadow: 0 0 30px 3px #f0d012;
+  }
+}
+
+.cosmic,
+.Cosmic,
+.COSMIC {
+  @keyframes cosmic-glowing {
+    0% {
+      box-shadow: 0 0 0 0 #ee1114, 0 0 24px 10px #ee1114;
+    }
+    100% {
+      box-shadow: 0 0 24px 10px #ee1114, 0 0 60px 25px transparent;
+    }
+  }
+  @keyframes cosmic-border-rotate {
+    @for $percent from 0 through 100 {
+      #{$percent * 1%} {
+        background-image: linear-gradient(#0c1044, #0c1044),
+          linear-gradient(#{$percent * 3.6deg}, #ee1114 0%, #ffaaad 50%, #ee1114 100%);
+      }
+    }
+  }
+  border: double 4px transparent;
+  background-image: linear-gradient(#0c1044, #0c1044),
+    linear-gradient(0, #ee1114 0%, #ffaaad 50%, #ee1114 100%);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  animation: cosmic-border-rotate 1500ms linear infinite, cosmic-glowing 750ms ease-in infinite;
+  &.large {
+    @keyframes cosmic-glowing-l {
+      0% {
+        box-shadow: 0 0 0 0 #ee1114, 0 0 30px 10px #ee1114;
+      }
+      100% {
+        box-shadow: 0 0 30px 10px #ee1114, 0 0 70px 20px transparent;
+      }
+    }
+    animation: cosmic-border-rotate 1500ms linear infinite, cosmic-glowing-l 750ms ease-in infinite;
+  }
+}
+
+// 0ed735
+// 0064fa
+// 6d1bf0
+// f0d012
+// ee1114
